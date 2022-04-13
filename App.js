@@ -1,49 +1,53 @@
+import {
+  useDimensions,
+  useDeviceOrientation,
+} from "@react-native-community/hooks";
 import { StatusBar } from "expo-status-bar";
 import {
+  Dimensions,
   StyleSheet,
   SafeAreaView,
-  Alert,
-  Button,
   Platform,
+  View,
 } from "react-native";
 
 export default function App() {
+  console.log(Dimensions.get("screen"));
+  console.log(useDimensions(), useDeviceOrientation());
+  const { landscape } = useDeviceOrientation();
+
   return (
-    <SafeAreaView style={[styles.container, containerStyle]}>
-      <Button
-        title="Click Me Default Alert"
-        onPress={() =>
-          alert(
-            "Button Tapped, StatusBar current Height: " +
-              StatusBar.currentHeight
-          )
-        }
-      />
-      <Button
-        color="orange"
-        title="Click Me Alert"
-        onPress={() =>
-          Alert.alert("My Title", "Button Tapped", [
-            { text: "Yes", onPress: () => console.log("Yes Pressed") },
-            { text: "No", onPress: () => console.log("No Pressed") },
-          ])
-        }
-      />
-      <Button
-        color="green"
-        title="Click Me Prompt"
-        onPress={
-          () =>
-            Alert.prompt("My Title", "Button Tapped", (text) =>
-              console.log(text)
-            ) // Only works in iOS
-        }
-      />
+    <SafeAreaView style={styles.container}>
+      <View
+        style={{
+          backgroundColor: "dodgerblue",
+          width: "100%",
+          height: landscape ? "100%" : "30%",
+          flex: 2,
+        }}
+      >
+        <View
+          style={{
+            backgroundColor: "gold",
+            flex: 2,
+          }}
+        />
+        <View
+          style={{
+            backgroundColor: "dodgerblue",
+            flex: 1,
+          }}
+        />
+        <View
+          style={{
+            backgroundColor: "tomato",
+            flex: 1,
+          }}
+        />
+      </View>
     </SafeAreaView>
   );
 }
-
-const containerStyle = { backgroundColor: "orange" };
 
 const styles = StyleSheet.create({
   container: {
