@@ -25,12 +25,7 @@ export default function App() {
       <View
         style={{
           backgroundColor: "gold",
-          // flexBasis: 100, //Map to width or height depending on the orientation
-          // flexGrow: 1,
-          // width: 100,
-          width: 300,
-          // flexShrink: 1,
-          flex: -1,
+          width: 100,
           height: 100,
         }}
       />
@@ -39,6 +34,15 @@ export default function App() {
           backgroundColor: "dodgerblue",
           width: 100,
           height: 100,
+          // top: 20,
+          // top: -20,
+          // bottom: 20,
+          // left: 20,
+          // right: 20,
+          // position: "relative",
+          position: "absolute",
+          top: 20,
+          left: 20,
         }}
       />
       <View
