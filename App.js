@@ -19,15 +19,19 @@ export default function App() {
         justifyContent: "center", //for main axis
         alignItems: "center", // for cross axis, within the line
         alignContent: "center", // for cross axis, within the whole content, works only with flexWrap
-        flexWrap: "wrap",
+        // flexWrap: "wrap",
       }}
     >
       <View
         style={{
           backgroundColor: "gold",
-          width: 100,
-          // height: 100,
-          height: 300,
+          // flexBasis: 100, //Map to width or height depending on the orientation
+          // flexGrow: 1,
+          // width: 100,
+          width: 300,
+          // flexShrink: 1,
+          flex: -1,
+          height: 100,
         }}
       />
       <View
@@ -40,20 +44,6 @@ export default function App() {
       <View
         style={{
           backgroundColor: "tomato",
-          width: 100,
-          height: 100,
-        }}
-      />
-      <View
-        style={{
-          backgroundColor: "gray",
-          width: 100,
-          height: 100,
-        }}
-      />
-      <View
-        style={{
-          backgroundColor: "greenyellow",
           width: 100,
           height: 100,
         }}
