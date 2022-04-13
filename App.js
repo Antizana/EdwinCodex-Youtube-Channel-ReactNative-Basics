@@ -1,67 +1,55 @@
 import { StatusBar } from "expo-status-bar";
 import {
   StyleSheet,
-  Text,
-  View,
-  TouchableWithoutFeedback,
-  TouchableOpacity,
-  TouchableHighlight,
-  TouchableNativeFeedback,
-  Image,
   SafeAreaView,
+  Alert,
+  Button,
+  Platform,
 } from "react-native";
 
 export default function App() {
-  const handlePress = () => {
-    console.log("Image Pressed!");
-  };
-  console.log(require("./assets/favicon.png"));
-
   return (
-    <SafeAreaView style={styles.container}>
-      <Text numberOfLines={1} onPress={() => console.log("Text clicked")}>
-        React Native Tutorial!
-      </Text>
-      <TouchableHighlight
-        onPress={() => console.log("Highlighted image Pressed!")}
-      >
-        <Image
-          style={styles.tinyLogo}
-          source={require("./assets/favicon.png")}
-        />
-      </TouchableHighlight>
-      <Text onPress={handlePress}>
-        <TouchableOpacity onLongPress={() => console.log("Long Tapped")}>
-          {/* <TouchableWithoutFeedback onPress={() => console.log("Image tapped")}> */}
-          <Image
-            blurRadius={1}
-            fadeDuration={1000}
-            source={{
-              width: 200,
-              height: 300,
-              uri: "https://picsum.photos/200/300",
-            }}
-          />
-          {/* </TouchableWithoutFeedback> */}
-        </TouchableOpacity>
-      </Text>
-      <TouchableNativeFeedback
-        onPress={() => console.log("Native Feedback Pressed!")}
-      >
-        <View
-          style={{ width: 200, height: 70, backgroundColor: "dodgerblue" }}
-        ></View>
-      </TouchableNativeFeedback>
-
-      <StatusBar style="auto" />
+    <SafeAreaView style={[styles.container, containerStyle]}>
+      <Button
+        title="Click Me Default Alert"
+        onPress={() =>
+          alert(
+            "Button Tapped, StatusBar current Height: " +
+              StatusBar.currentHeight
+          )
+        }
+      />
+      <Button
+        color="orange"
+        title="Click Me Alert"
+        onPress={() =>
+          Alert.alert("My Title", "Button Tapped", [
+            { text: "Yes", onPress: () => console.log("Yes Pressed") },
+            { text: "No", onPress: () => console.log("No Pressed") },
+          ])
+        }
+      />
+      <Button
+        color="green"
+        title="Click Me Prompt"
+        onPress={
+          () =>
+            Alert.prompt("My Title", "Button Tapped", (text) =>
+              console.log(text)
+            ) // Only works in iOS
+        }
+      />
     </SafeAreaView>
   );
 }
+
+const containerStyle = { backgroundColor: "orange" };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#eee",
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     alignItems: "center",
     justifyContent: "center",
   },
