@@ -17,35 +17,52 @@ export default function App() {
   const { landscape } = useDeviceOrientation();
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View
+      style={{
+        backgroundColor: "#fff",
+        flex: 1,
+        flexDirection: "row",
+        // flexDirection: "row-reverse",
+        // flexDirection: "column",
+        justifyContent: "center", //for main axis
+        // justifyContent: "flex-end",
+        // justifyContent: "flex-start",
+        // justifyContent: "space-around",
+        // justifyContent: "space-between",
+        // justifyContent: "space-evenly",
+        alignItems: "center", // for cross axis
+        // alignItems: "baseline",
+        // alignItems: "flex-end",
+        // alignItems: "flex-start",
+        // alignItems: "stretch",
+      }}
+    >
+      <View
+        style={{
+          backgroundColor: "gold",
+          width: 100,
+          // height: 100,
+          // height: 300,
+          height: 300,
+          alignSelf: "flex-start",
+        }}
+      />
       <View
         style={{
           backgroundColor: "dodgerblue",
-          width: "100%",
-          height: landscape ? "100%" : "30%",
-          flex: 2,
+          width: 100,
+          // height: 100,
+          height: 200,
         }}
-      >
-        <View
-          style={{
-            backgroundColor: "gold",
-            flex: 2,
-          }}
-        />
-        <View
-          style={{
-            backgroundColor: "dodgerblue",
-            flex: 1,
-          }}
-        />
-        <View
-          style={{
-            backgroundColor: "tomato",
-            flex: 1,
-          }}
-        />
-      </View>
-    </SafeAreaView>
+      />
+      <View
+        style={{
+          backgroundColor: "tomato",
+          width: 100,
+          height: 100,
+        }}
+      />
+    </View>
   );
 }
 
